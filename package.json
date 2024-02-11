@@ -26,6 +26,7 @@
     "googleapis": "^105.0.0",
     "lint": "^0.8.19",
     "mongodb": "^6.3.0",
+    "node": "^21.6.1",
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12",
     "session": "^0.1.0",
