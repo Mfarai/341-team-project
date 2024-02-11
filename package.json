@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Mfarai/341-team-project.git#readme",
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.0",
+    "api-docs": "^0.0.1",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.2",
