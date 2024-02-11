@@ -1,5 +1,5 @@
 {
-  "name": "cse-341-projects",
+  "name": "341-team-project.git",
   "version": "1.0.0",
   "description": "my first project",
   "main": "server.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mfarai/cse-341-projects.git"
+    "url": "git+https://github.com/Mfarai/341-team-project.git"
   },
   "author": "farai",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Mfarai/cse-341-projects/issues"
+    "url": "https://github.com/Mfarai/341-team-project./issues"
   },
-  "homepage": "https://github.com/Mfarai/cse-341-projects#readme",
+  "homepage": "https://github.com/Mfarai/341-team-project.git#readme",
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.0",
     "body-parser": "^1.20.2",
