@@ -20,7 +20,7 @@ app.use(session({
 app.use(passport.initialize())
 // init passport on every root call
 app.use(passport.session())
-// allow passport to use "express-session".
+// allow passport to use "express-session"..
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
