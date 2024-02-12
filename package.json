@@ -1,0 +1,34 @@
+{
+  "name": "cse-341-projects",
+  "version": "1.0.0",
+  "description": "my first project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mfarai/cse-341-projects.git"
+  },
+  "author": "farai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mfarai/cse-341-projects/issues"
+  },
+  "homepage": "https://github.com/Mfarai/cse-341-projects#readme",
+  "dependencies": {
+    "@google-cloud/local-auth": "^2.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.2",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "googleapis": "^105.0.0",
+    "lint": "^0.8.19",
+    "mongodb": "^6.3.0",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0"
+  }
+}
