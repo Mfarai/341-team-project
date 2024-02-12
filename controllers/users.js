@@ -2,20 +2,20 @@ const { ObjectId } = require('mongodb');
 const mongodb = require('../data/database');
 
 const getAll = async (req, res) => {
-  const result = await mongodb.getDatabase().db().collection('friends').find();
-  const friends = await result.toArray();
+  const result = await mongodb.getDatabase().db().collection('users').find();
+  const users = await result.toArray();
   res.setHeader('Content-Type', 'application/json');
-  res.status(200).json(friends);
+  res.status(200).json(users);
 };
 
 const getSingle = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id);
-    const result = await mongodb.getDatabase().db().collection('friends').find({ _id: userId });
-    const friends = await result.toArray();
-    if (friends.length > 0) {
+    const result = await mongodb.getDatabase().db().collection('users').find({ _id: userId });
+    const users = await result.toArray();
+    if (users.length > 0) {
       res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(friends[0]);
+      res.status(200).json(users[0]);
     } else {
       res.status(404).json({ message: 'Friend not found' });
     }
@@ -24,7 +24,7 @@ const getSingle = async (req, res) => {
   }
 };
 
-const createFriend = async (req, res) => {
+const createUsers = async (req, res) => {
   try {
     const user = {
       name: req.body.name,
@@ -37,7 +37,7 @@ const createFriend = async (req, res) => {
       ipaddress: req.body.ipaddress,
     };
 
-    const response = await mongodb.getDatabase().db().collection('friends').insertOne(user);
+    const response = await mongodb.getDatabase().db().collection('users').insertOne(user);
     if (response.acknowledged) {
       res.status(201).send();
     } else {
@@ -48,7 +48,7 @@ const createFriend = async (req, res) => {
   }
 };
 
-const updateFriend = async (req, res) => {
+const updateUsers = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id);
     const user = {
@@ -62,7 +62,7 @@ const updateFriend = async (req, res) => {
       ipaddress: req.body.ipaddress,
     };
 
-    const response = await mongodb.getDatabase().db().collection('friends').replaceOne({ _id: userId }, user);
+    const response = await mongodb.getDatabase().db().collection('users').replaceOne({ _id: userId }, user);
     if (response.modifiedCount > 0) {
       res.status(204).send();
     } else {
@@ -73,10 +73,10 @@ const updateFriend = async (req, res) => {
   }
 };
 
-const deleteFriend = async (req, res) => {
+const deleteUsers = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db().collection('friends').deleteOne({ _id: userId });
+    const response = await mongodb.getDatabase().db().collection('users').deleteOne({ _id: userId });
     if (response.deleteCount > 0) {
       res.status(204).send();
     } else {
@@ -90,7 +90,7 @@ const deleteFriend = async (req, res) => {
 module.exports = {
   getAll,
   getSingle,
-  createFriend,
-  updateFriend,
-  deleteFriend,
+  createUsers,
+  updateUsers,
+  deleteUsers,
 };
