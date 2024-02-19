@@ -25,42 +25,44 @@ const getSingle = async (req, res) => {
 
 const createUsers = async (req, res) => {
   try {
-    const { name, surname, phone, email, username } = req.body
-    if (!name || !surname || !phone || !email || !username) {
-      res.status(400).json({ message: 'Missing required fields' })
-      return
+      const user = {
+        name: req.body.name,
+        surname: req.body.surname,
+        phone: req.body.phone,
+        email: req.body.email,
+        username: req.body.username,
+      };
+      
+      const response = await mongodb.getDatabase().db().collection("users").insertOne(user);
+      if (response.acknowledged) {
+        res.status(201).send();
+      } else {
+        res.status(500).json({ message: 'Error while creating trip', error: response.error || 'Unknown error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: 'Error while creating trip', error });
     }
-
-    const user = { name, surname, phone, email, username }
-    const response = await mongodb.getDatabase().db().collection("users").insertOne(user)
-    if (response.acknowledged && response.insertedCount > 0) {
-      res.status(201).json({ message: 'User created', id: response.insertedId })
-    } else {
-      res.status(500).json({ message: 'Error while creating user', error: response.error || 'Unknown error' })
-    }
-  } catch (error) {
-    res.status(500).json({ message: 'Error while creating user', error: error.message })
-  }
-}
+};
 
 const updateUsers = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id)
-    const { name, surname, phone, email, username } = req.body
-    if (!name || !surname || !phone || !email || !username) {
-      res.status(400).json({ message: 'Missing required fields' })
-      return
-    }
+    const user = {
+      name: req.body.name,
+      surname: req.body.surname,
+      phone: req.body.phone,
+      email: req.body.email,
+      username: req.body.username,
+    };
 
-    const user = { name, surname, phone, email, username }
-    const response = await mongodb.getDatabase().db().collection("users").replaceOne({ _id: userId }, user)
-    if (response.matchedCount > 0 && response.modifiedCount > 0) {
-      res.status(204).send()
+    const response = await mongodb.getDatabase().db().collection("users").replaceOne({ _id: userId }, user);
+    if (response.modifiedCount > 0) {
+      res.status(204).send();
     } else {
-      res.status(500).json({ message: 'Error while updating user', error: response.error || 'Unknown error' })
+      res.status(500).json({ message: 'Error while updating trip', error: response.error || 'Unknown error' });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Error while updating user', error: error.message })
+    res.status(500).json({ message: 'Error while updating trip', error });
   }
 }
 

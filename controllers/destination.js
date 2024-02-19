@@ -52,7 +52,7 @@ const createDestinations = async (req, res) => {
     const response = await mongodb
       .getDatabase()
       .db()
-      .collection("destination")
+      .collection("destinations")
       .insertOne(destination);
 
     if (response.acknowledged) {
@@ -84,7 +84,7 @@ const updateDestinations = async (req, res) => {
     const response = await mongodb
       .getDatabase()
       .db()
-      .collection("destination")
+      .collection("destinations")
       .replaceOne({ _id: destinationId }, destination);
 
     if (response.modifiedCount > 0) {
@@ -106,7 +106,7 @@ const deleteDestinations = async (req, res) => {
     const response = await mongodb
       .getDatabase()
       .db()
-      .collection("destination")
+      .collection("destinations")
       .deleteOne({ _id: destinationId });
 
     if (response.deletedCount > 0) {
